@@ -1,6 +1,6 @@
 import { AuctionItem } from '../types'
 
-export async function fetchAutionItems(): Promise<AuctionItem[]> {
+export async function fetchAuctionItems(): Promise<AuctionItem[]> {
   const response = await fetch(
     'https://sttrafficplatformassets.blob.core.windows.net/traffic-assets/lots.json',
     { cache: 'force-cache' }

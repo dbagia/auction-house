@@ -17,11 +17,12 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ## Description
 
 I have made following assumptions/decisions:
+
 - The Search and Filter work on the client side after the data is fetched once from the server component. These are only available on the homepage though they search and return all the items instead of just the top 3
 - Clicking "View More" loads all the items of that category
 - There is no error handling
 - If the search/filter does not yield a result, there is no feedback for the user
-- The coding approach is a partial implementation of the Onion architecture. In that, it is only using the concept of use-cases. The components can fetch or compute information only via use-cases. Also, a use-case is the only thing that can make api calls. One use-case and call other use-cases. Use-cases cannot import components. Ideally, use-cases should be injected in order to make full use of this approach (this project does not have that feature). 
+- The coding approach is a partial implementation of the Onion architecture. In that, it is only using the concept of use-cases. The components can fetch or compute information only via use-cases. Also, a use-case is the only thing that can make api calls. One use-case and call other use-cases. Use-cases cannot import components. Ideally, use-cases should be injected in order to make full use of this approach (this project does not have that feature).
 
 ## Limitations
 
@@ -37,7 +38,7 @@ This solution does not contain the following features:
 1. Implement search and filter as server side components
 2. Better naming - the current naming can be confusing
 3. Image optimisation - load images from a CDN
-4. Responsiveness - the current solution is partly responsive 
+4. Responsiveness - the current solution is partly responsive
 5. Provide a way to reset search/filters. This is not implemented in the current solution
 6. Implmenent error handling, Not found page etc.
 7. Add tests

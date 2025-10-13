@@ -1,6 +1,8 @@
-import { fetchAutionItems } from '@/app/lib/api'
+import { fetchAuctionItems } from '@/app/lib/api'
+
+export const dynamic = 'force-static'
 
 export async function GET() {
-  const auctionItems = await fetchAutionItems()
+  const auctionItems = await fetchAuctionItems()
   return Response.json(auctionItems)
 }

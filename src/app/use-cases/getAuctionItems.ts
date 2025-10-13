@@ -1,4 +1,4 @@
-import { fetchAutionItems } from '../lib/api'
+import { fetchAuctionItems } from '../lib/api'
 import { AuctionItem } from '../types'
 
 // The components never directly access the /api. They always have
@@ -6,5 +6,5 @@ import { AuctionItem } from '../types'
 // by adding DI and then we can isolate business logic from data access
 // and easily add tests
 export async function getAuctionItems(): Promise<AuctionItem[]> {
-  return await fetchAutionItems()
+  return await fetchAuctionItems()
 }

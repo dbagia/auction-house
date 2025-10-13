@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { AuctionItem } from '@/app/types'
 import { useItems } from '@/app/context/AuctionItemsContext'
-import Badge, { BadgeType } from './ui/Badge'
-import { getFormattedDate, getFormattedPrice } from '../lib/utils'
+import Badge, { BadgeType } from '@/app/components/ui/Badge'
+import { getFormattedDate, getFormattedPrice } from '@/app/lib/utils'
 
 interface AuctionItemDetailProps {
   itemId: string
