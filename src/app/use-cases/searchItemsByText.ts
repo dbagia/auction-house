@@ -1,0 +1,11 @@
+import { AuctionItem } from '../types'
+
+export function searchItemsByText(textToSearch: string) {
+  return (items: AuctionItem[]) => {
+    const query = textToSearch.trim().toLowerCase()
+    if (!query) {
+      return items
+    }
+    return items.filter((item) => item.title.toLowerCase().includes(query))
+  }
+}
