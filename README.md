@@ -44,3 +44,17 @@ This solution does not contain the following features:
 7. Add tests
 8. Improve types
 9. Use Next.js caching
+
+## Screenshots
+
+1. Mobile view - home page
+   ![home page](./Pasted%20image%2020251013211400.png)
+
+2. Mobile view with filters
+   ![with filters](Pasted%20image%2020251013211536.png)
+
+3. Mobile view - Item detail
+   ![item detail](Pasted%20image%2020251013211705.png)
+
+4. iPad Pro - home page
+   ![iPad home page](Pasted%20image%2020251013211816.png)
