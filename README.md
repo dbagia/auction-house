@@ -31,7 +31,7 @@ This solution does not contain the following features:
 1. Debouncing
 2. Price range filters
 3. Dark mode
-4. Live auction countdown
+4. ~~Live auction countdown~~
 
 ## Potential improvements
 
@@ -44,6 +44,11 @@ This solution does not contain the following features:
 7. Add tests
 8. Improve types
 9. Use Next.js caching
+
+## Additional features
+
+1. Live auction countdown<br>
+Caveat: As the auction items from the API have ends dates in the past, this feature has a hard-coded current date set to July 1st, 2025 in order to successfully show the countdown for live auctions. With each refresh, the current date will be reset and the countdown will start from the begining.
 
 ## Screenshots
 
@@ -58,3 +63,4 @@ This solution does not contain the following features:
 
 4. iPad Pro - home page
    ![iPad home page](Pasted%20image%2020251013211816.png)
+

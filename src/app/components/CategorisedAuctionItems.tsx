@@ -42,13 +42,17 @@ export function CategorisedAuctionItems({ items }: CategorisedAuctionItemsProps)
       if (selectedCategory) {
         url = `${url}${searchText ? '&' : ''}category=${encodeURIComponent(selectedCategory)}`
       }
-      router.replace(url)
     }
+    router.replace(url)
   }, [router, searchText, selectedCategory])
 
-  const groupedItems: AuctionItemsByCategory[] = groupItemsByCategory(
-    pipe(items, filterItemsByCategory(selectedCategory), searchItemsByText(searchText))
+  const groupedItems: AuctionItemsByCategory[] = pipe(
+    items,
+    filterItemsByCategory(selectedCategory),
+    searchItemsByText(searchText),
+    groupItemsByCategory
   )
+
   const categories: string[] = getItemCategories(items)
 
   const handleSearchQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
