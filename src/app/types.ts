@@ -14,3 +14,16 @@ export interface AuctionItemsByCategory {
   title: string
   items: AuctionItem[]
 }
+
+export interface Countdown {
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
+}
+
+export interface CountdownUnit {
+  value: number
+  text: string
+}
+

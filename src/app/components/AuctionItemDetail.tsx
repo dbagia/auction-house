@@ -1,10 +1,12 @@
 'use client'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { AuctionItem } from '@/app/types'
+import { AuctionItem, CountdownUnit } from '@/app/types'
 import { useItems } from '@/app/context/AuctionItemsContext'
+import { useTimer } from '@/app/context/TimerContext'
 import Badge, { BadgeType } from '@/app/components/ui/Badge'
-import { getFormattedDate, getFormattedPrice } from '@/app/lib/utils'
+import CountdownTimer from '@/app/components/CountdownTimer'
+import { getFormattedDate, getFormattedPrice, getCountdown } from '@/app/lib/utils'
 
 interface AuctionItemDetailProps {
   itemId: string
@@ -13,6 +15,7 @@ interface AuctionItemDetailProps {
 export function AuctionItemDetail({ itemId }: AuctionItemDetailProps) {
   const [item, setItem] = useState<AuctionItem | null>(null)
   const { items, setItems } = useItems()
+  const { now } = useTimer()
 
   const id = Number(itemId)
   if (isNaN(id)) {
@@ -46,6 +49,31 @@ export function AuctionItemDetail({ itemId }: AuctionItemDetailProps) {
 
   const formattedDate = getFormattedDate(item.endDate)
   const formatedPrice = getFormattedPrice(item.estimatedValue)
+  const countDown = getCountdown(now, new Date(item.endDate).getTime())
+
+  let countdownUnits: CountdownUnit[] = []
+  if (countDown) {
+    const { days, hours, minutes, seconds } = countDown
+
+    countdownUnits = [
+      {
+        value: days,
+        text: 'days',
+      },
+      {
+        value: hours,
+        text: 'hours',
+      },
+      {
+        value: minutes,
+        text: 'mins',
+      },
+      {
+        value: seconds,
+        text: 'secs',
+      },
+    ]
+  }
 
   const badgeTypeByStatus: Record<string, BadgeType> = {
     upcoming: 'warn',
@@ -96,9 +124,15 @@ export function AuctionItemDetail({ itemId }: AuctionItemDetailProps) {
               </div>
 
               <div>
-                <p className="text-sm text-gray-500 uppercase tracking-wide mb-1">Auction Date</p>
+                <p className="text-sm text-gray-500 uppercase tracking-wide mb-1">End Date</p>
                 <p className="text-lg font-medium text-foreground">{formattedDate}</p>
               </div>
+              {item.status === 'live' && (
+                <div>
+                  <p className="text-sm text-gray-500 uppercase tracking-wide mb-1">Ends In</p>
+                  <CountdownTimer units={countdownUnits} />
+                </div>
+              )}
             </div>
           </div>
         </div>

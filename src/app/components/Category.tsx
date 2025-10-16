@@ -8,7 +8,7 @@ interface CategoryProps {
   shouldShowLimitedItems: boolean
 }
 
-export function Category({ category, shouldShowLimitedItems }: CategoryProps) {
+export default function Category({ category, shouldShowLimitedItems }: CategoryProps) {
   return (
     <section key={category.title}>
       <div className="flex items-center justify-between my-4">

@@ -1,7 +1,8 @@
+import './globals.css'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import './globals.css'
 import { AuctionItemsProvider } from './context/AuctionItemsContext'
+import { TimerProvider } from '@/app/context/TimerContext'
 import Header from './components/Header'
 
 const geistSans = Geist({
@@ -24,6 +25,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // As the API does not have future dates, in order to show a countdown timer, we are setting today as July 1, 2025
+  const now = new Date('2025-07-01').getTime()
   return (
     <html lang="en">
       <head>
@@ -33,7 +36,9 @@ export default function RootLayout({
         <div className="min-h-full">
           <Header />
           <main className="mx-3">
-            <AuctionItemsProvider>{children}</AuctionItemsProvider>
+            <TimerProvider serverNow={now}>
+              <AuctionItemsProvider>{children}</AuctionItemsProvider>
+            </TimerProvider>
           </main>
         </div>
       </body>

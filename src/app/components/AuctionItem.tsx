@@ -1,7 +1,11 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { type AuctionItem } from '../types'
-import { getFormattedDate, getFormattedPrice } from '../lib/utils'
+import { type AuctionItem, CountdownUnit } from '@/app/types'
+import { getFormattedDate, getFormattedPrice, getCountdown } from '@/app/lib/utils'
+import { useTimer } from '@/app/context/TimerContext'
+import CountdownTimer from '@/app/components/CountdownTimer'
 
 interface AuctionItemProps {
   item: AuctionItem
@@ -10,6 +14,33 @@ interface AuctionItemProps {
 export function AuctionItem({ item }: AuctionItemProps) {
   const formattedDate = getFormattedDate(item.endDate)
   const formatedPrice = getFormattedPrice(item.estimatedValue)
+  const { now } = useTimer()
+  const countDown = getCountdown(now, new Date(item.endDate).getTime())
+
+  let countdownUnits: CountdownUnit[] = []
+  if (countDown) {
+    const { days, hours, minutes, seconds } = countDown
+
+    countdownUnits = [
+      {
+        value: days,
+        text: 'days',
+      },
+      {
+        value: hours,
+        text: 'hours',
+      },
+      {
+        value: minutes,
+        text: 'mins',
+      },
+      {
+        value: seconds,
+        text: 'secs',
+      },
+    ]
+  }
+
   return (
     <div className="overflow-hidden rounded-xl bg-white shadow-md my-2" key={item.id}>
       <Link href={`/auction-item/${item.id}`}>
@@ -32,6 +63,7 @@ export function AuctionItem({ item }: AuctionItemProps) {
             <p className="mt-2 text-2xl font-bold text-yellow-600">{formatedPrice}</p>
             <p className="mt-2 text-lg text-gray-600">{formattedDate}</p>
             <p className="mt-2 text-lg text-gray-600">{item.status}</p>
+            {item.status === 'live' && <CountdownTimer units={countdownUnits} />}
           </div>
         </div>
       </Link>
