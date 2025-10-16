@@ -1,4 +1,4 @@
-import { AuctionItem, AuctionItemsByCategory } from '../types'
+import { AuctionItem, AuctionItemsByCategory } from '@/app/types'
 
 interface AuctionItemsGrouped {
   [key: string]: { title: string; items: AuctionItem[] }

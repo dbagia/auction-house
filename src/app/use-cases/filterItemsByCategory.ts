@@ -1,4 +1,4 @@
-import { AuctionItem } from '../types'
+import { AuctionItem } from '@/app/types'
 
 export function filterItemsByCategory(category: string) {
   return (items: AuctionItem[]) => {

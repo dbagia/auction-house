@@ -1,4 +1,4 @@
-import { AuctionItem } from '../types'
+import { AuctionItem } from '@/app/types'
 
 export function getItemCategories(items: AuctionItem[]) {
   if (!items || items.length === 0) {

@@ -1,4 +1,4 @@
-import ItemsList from './ItemsList'
+import ItemsList from '@/app/components/ItemsList'
 
 export default async function AllItemsByCategoryPage({
   params,

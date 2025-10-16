@@ -1,6 +1,5 @@
 'use client'
-
-import { type AuctionItem } from '../types'
+import { type AuctionItem } from '@/app/types'
 import { createContext, useContext, useState, ReactNode } from 'react'
 
 interface AuctionItemsContextType {

@@ -1,4 +1,4 @@
-import { getAuctionItems } from './use-cases/getAuctionItems'
+import { getAuctionItems } from './use-cases'
 import { CategorisedAuctionItems } from './components/CategorisedAuctionItems'
 import { AuctionItem } from './types'
 

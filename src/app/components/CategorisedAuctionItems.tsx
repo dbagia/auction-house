@@ -1,16 +1,18 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { AuctionItemsByCategory, type AuctionItem } from '../types'
-import { useItems } from '../context/AuctionItemsContext'
-import { groupItemsByCategory } from '../use-cases/getAndFormatAuctionItems'
+import { AuctionItemsByCategory, type AuctionItem } from '@/app/types'
+import { useItems } from '@/app/context/AuctionItemsContext'
+import {
+  groupItemsByCategory,
+  filterItemsByCategory,
+  searchItemsByText,
+  getItemCategories,
+} from '@/app/use-cases'
 import Category from '@/app/components/Category'
-import { searchItemsByText } from '../use-cases/searchItemsByText'
-import { filterItemsByCategory } from '../use-cases/filterItemsByCategory'
-import { pipe } from '../lib/utils'
-import { getItemCategories } from '../use-cases/getItemCategories'
-import Search from './Search'
-import Filters from './Filters'
+import { pipe } from '@/app/lib/utils'
+import Search from '@/app/components/Search'
+import Filters from '@/app/components/Filters'
 
 interface CategorisedAuctionItemsProps {
   items: AuctionItem[]

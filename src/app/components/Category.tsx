@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
-import { AuctionItemsByCategory } from '../types'
+import { AuctionItemsByCategory } from '@/app/types'
 import { AuctionItem } from './AuctionItem'
 
 interface CategoryProps {

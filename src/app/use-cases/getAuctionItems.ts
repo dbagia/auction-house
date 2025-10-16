@@ -1,5 +1,5 @@
-import { fetchAuctionItems } from '../lib/api'
-import { AuctionItem } from '../types'
+import { fetchAuctionItems } from '@/app/lib/api'
+import { AuctionItem } from '@/app/types'
 
 // The components never directly access the /api. They always have
 // to go through a use-case to fetch data. This pattern can be extended

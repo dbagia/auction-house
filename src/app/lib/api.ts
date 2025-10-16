@@ -1,4 +1,4 @@
-import { AuctionItem } from '../types'
+import { AuctionItem } from '@/app/types'
 
 export async function fetchAuctionItems(): Promise<AuctionItem[]> {
   const response = await fetch(
